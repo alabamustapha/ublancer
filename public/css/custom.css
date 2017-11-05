@@ -1,0 +1,47 @@
+/*
+* ==========================================================
+*     Categories SECTION
+* ==========================================================
+*/
+section.categories .owl-carousel .owl-stage-outer {
+  padding: 70px 0 50px;
+}
+
+section.categories .item-holder {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+section.categories .item {
+  -webkit-box-shadow: 5.665px 5.429px 15px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 5.665px 5.429px 15px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 260px;
+  height: 188px;
+  margin: 0;
+  padding: 20px;
+  
+}
+
+section.categories .item p {
+  line-height: 1.8rem;
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+  color: #656565;
+}
+
+
+/* categories Media Query ------------------------- */
+@media (max-width: 1199px) {
+  section.categories .item {
+    -webkit-box-shadow: -5.665px 9.429px 25px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -5.665px 9.429px 25px 0px rgba(0, 0, 0, 0.2);
+    padding: 60px 40px 40px;
+  }
+  section.categories .item .avatar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+  }
+}
