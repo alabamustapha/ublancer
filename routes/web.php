@@ -11,10 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('admin', 'AdminController@index')->name('admin');
+
+Route::get('admin/categories', 'CategoryController@index')->name('admin_categories');
+Route::post('admin/categories', 'CategoryController@store')->name('add_category');
+Route::put('admin/categories/{category}', "CategoryController@update")->name('update_category');
+Route::get('admin/categories/{category}/edit', "CategoryController@edit")->name('edit_category');
+Route::delete('admin/categories/{category}/delete', "CategoryController@delete")->name('delete_category');
+
+Route::get('/admin/skills', 'SkillController@index')->name('admin_skills');
+Route::post('admin/skills', 'SkillController@store')->name('add_skill');
+Route::get('admin/skills/{skill}/edit', "SkillController@edit")->name('edit_skill');
+Route::delete('admin/skills/{skill}/delete', "SkillController@delete")->name('delete_skill');
+
+
+Route::get('/user/{user}', 'HomeController@profile')->name('profile');
+
+Route::get('/how', 'HomeController@index')->name('how');
+Route::get('/freelancer', 'HomeController@index')->name('freelancer');
+
+
+
+Route::get('/post_job', 'JobController@create')->name('post_job');
+Route::post('/jobs', 'JobController@store')->name('add_job');
+Route::get('/jobs', 'FreelancerController@jobs')->name('jobs');
+Route::get('/jobs/{job}', 'JobController@show')->name('job');
+Route::post('/jobs/{job}/proposals', 'ProposalController@store')->name('send_proposal');
+
+

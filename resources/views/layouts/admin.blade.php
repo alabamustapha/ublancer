@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="/vendor/owl.carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    @yield('styles')
     <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href='/vendor/sweetalert/sweetalert.css'>
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
@@ -33,10 +33,24 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.partials.nav')
+    
+    @include('layouts.partials.nav')
         
+    <div class="container-fluid" id="admin-page">
+      <div class="row">
+        
+        @include('layouts.partials.admin-nav')
 
-        @yield('content')
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+            
+            @yield('admin-content')  
+
+        </main>
+
+      </div>
+    </div>
+
+        
     </div>
 
     <!-- Scripts -->
@@ -44,9 +58,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"> </script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <!-- <script src="{{ asset('js/sweetalert.min.js') }}"></script> -->
+    <script src='/vendor/sweetalert/sweetalert.min.js'></script>
     <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="/js/front.js"></script>
-
+    @if (session('message'))
+        <script type="text/javascript">
+          
+          swal({
+                title: "{{ session('message') }}",
+                timer: 1500
+              });
+        </script>
+    @endif
+    
     @yield('scripts')
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
