@@ -1,7 +1,7 @@
 # Features for Basic Verison #
-Common Sign Up / Login
-Client - Freelancer 
-Client - Post Job , View Proposals , Accept / Decline Proposal , Chat Freelancer (Simple Chat with Attachment support)
+Common Sign Up / Login  
+Client - Freelancer  
+Client - Post Job , View Proposals , Accept / Decline Proposal , Chat Freelancer (Simple Chat with Attachment support)  
 Post Job - Job name  , Description, Required skills (Can be Multiple), Time , Budget . 
 Freelancer - Bid on the Job 
 FReelancers will have limited number of bids based on the Package they choose 
@@ -22,3 +22,13 @@ Admin can create / update Packages
   (Whenever a Notification Email is sent , A push notification will also be sent)<br>
   For push notifications we can use (https://onesignal.com/) - There are laravel Packages available for this .<br>
   Based on Device token and device type notifications will be sent .<br>
+  
+  ## Modules Planned
+  Upload Theme 
+  
+  
+  
+  
+  
+  
+  
