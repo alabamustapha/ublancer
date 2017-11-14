@@ -44,7 +44,7 @@
   </div>
     <section id="job-list" class="jobs">
       <div class="container">
-        <header class="text-center no-margin-bottom">   
+          <header class="text-center no-margin-bottom">   
           <h2>Job - Proposals</h2>
           @if ($errors->any())
               <div class="alert alert-danger">
@@ -56,69 +56,71 @@
               </div>
           @endif
           <p class="lead">find jobs related to your skills, be nice with buyers</p>
-        </header>
+          </header>
          
-         <div class="row">
+          <div class="row">
+            
             <div class="col-md-8">
-              <div class="card">
-                
+              <div class="card">  
                 <div class="card-body">
                   <h6 class="card-title">{{ $job->title }}</h6>
                   <p class="card-text">{{ $job->description }}</p>
                   
-                <strong>
+                  <strong>
                   Created: <span class="badge badge-light">{{ $job->created_at->diffForHumans() }}</span>
                   <span class="sr-only">Created</span>
-                </strong>  
-
-                <strong>
+                  </strong>  
+                  <strong>
                   Budget: <span class="badge badge-light">{{ '$' . $job->budget }}</span>
                   <span class="sr-only">Budget</span>
-                </strong>  
-                <strong>
+                  </strong>  
+                  <strong>
                   Duration: <span class="badge badge-light">{{ $job->days }}</span>
                   <span class="sr-only">Duration</span>
-                </strong>  
-                <strong>
+                  </strong>  
+                  <strong>
                   Type: <span class="badge badge-light">{{ $job->type }}</span>
                   <span class="sr-only">Type</span>
-                </strong>
-                 <strong>
+                  </strong>
+                  <strong>
                   Skills:
                   @foreach($job->skills as $skill)
                     <span class="badge badge-primary">{{ $skill }}</span>
                   @endforeach
-                </strong> 
+                  </strong> 
                   @if(!($proposal))
                   <hr>
                   <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Send proposal</button>
                   @endif
-                </div>
-              </div> 
+              </div>
+            </div>
+
+              @if($proposal)
               <div class="card">
                   <div class="card-header">
                       Offers sent: {{ $job->proposals->count() }}
                   </div>
                   <div class="card-body">
-                  <h4 class="card-title">My proposal</h4>
-                  <p class="card-text">{{ $proposal->body }}</p>
+                    <h4 class="card-title">My proposal</h4>
+                    <p class="card-text">{{ $proposal->body }}</p>
+                    <strong>
+                    Created: <span class="badge badge-light">{{ $proposal->created_at->diffForHumans() }}</span>
+                    <span class="sr-only">Created</span>
+                    </strong>  
+
                   <strong>
-                  Created: <span class="badge badge-light">{{ $proposal->created_at->diffForHumans() }}</span>
-                  <span class="sr-only">Created</span>
-                </strong>  
-
-                <strong>
-                  Budget: <span class="badge badge-light">{{ '$' . $proposal->offer }}</span>
-                  <span class="sr-only">Budget</span>
-                </strong>  
-                <strong>
-                  Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
-                  <span class="sr-only">Duration</span>
-                </strong>  
-
-                  </div>
+                    Budget: <span class="badge badge-light">{{ '$' . $proposal->offer }}</span>
+                    <span class="sr-only">Budget</span>
+                  </strong>  
+                  <strong>
+                    Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
+                    <span class="sr-only">Duration</span>
+                  </strong>  
+                </div>
               </div> 
-            </div>
+              @endif
+          </div>
+            
             <div class="col-md-4">
               <div class="card" style="width: 20rem;">
                 <img class="card-img-top" src="/img/cat.jpeg" alt="Card image cap">
@@ -141,12 +143,10 @@
                 </div>
               </div>
             </div>
-            
+
           </div>       
 
       </div>
-
-
     </section>
    
   
