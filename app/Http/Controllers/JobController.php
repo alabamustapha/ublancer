@@ -11,8 +11,9 @@ use App\Http\Requests;
 class JobController extends Controller
 {
     public function show(Job $job){
-      // dd(auth()->user()->proposals);
-    	return view('jobs.show', compact(['job']));
+      
+      $proposal = auth()->user()->job_proposal($job->id);
+    	return view('jobs.show', compact(['job', 'proposal']));
     }
 
     public function create(){

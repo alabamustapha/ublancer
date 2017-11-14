@@ -106,6 +106,19 @@ section.categories .item p {
 
 
 /*
+* Profile Links
+*/
+
+a.profile-link,
+a.profile-link:hover,
+a.profile-link:visited,
+a.profile-link:active{
+  text-decoration: none;
+  color: #212529;
+}
+
+
+/*
 * Jobs list
 */
 
@@ -119,9 +132,13 @@ section#job-list{
   padding-top: 50px;
 }
 
+.pt-30{
+  padding-top: 30px;
+}
+
 .profile-img{
   max-width: 75px;
   display: block;
   margin: auto;
-  margin-top: -80px;
+  margin-top: -60px;
 }

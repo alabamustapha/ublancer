@@ -28,7 +28,8 @@ Route::get('admin/skills/{skill}/edit', "SkillController@edit")->name('edit_skil
 Route::delete('admin/skills/{skill}/delete', "SkillController@delete")->name('delete_skill');
 
 
-Route::get('/user/{user}', 'HomeController@profile')->name('profile');
+Route::get('/user/{user}', 'ProfileController@show')->name('profile');
+Route::PUT('/user/{user}/update_profile', 'ProfileController@update')->name('update_profile');
 
 Route::get('/how', 'HomeController@index')->name('how');
 Route::get('/freelancer', 'HomeController@index')->name('freelancer');

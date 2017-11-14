@@ -22,7 +22,16 @@
             @endguest
 
             @auth
-              <li class="nav-item"><a href="#" class="nav-link link-scroll"><i class="fa fa-user"></i> {{ Auth::user()->username }}</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link link-scroll dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->username }}</a>
+                
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('profile', ['user' => auth()->user()->username ]) }}">Profile</a>
+                  <a class="dropdown-item" href="#">Dashboard</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </div>
+              </li>
             @endauth
 
           </ul>

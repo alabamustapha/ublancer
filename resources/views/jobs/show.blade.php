@@ -45,7 +45,7 @@
     <section id="job-list" class="jobs">
       <div class="container">
         <header class="text-center no-margin-bottom">   
-          <h2>Available Jobs</h2>
+          <h2>Job - Proposals</h2>
           @if ($errors->any())
               <div class="alert alert-danger">
                   <ul>
@@ -89,23 +89,35 @@
                     <span class="badge badge-primary">{{ $skill }}</span>
                   @endforeach
                 </strong> 
+                  @if(!($proposal))
                   <hr>
                   <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Send proposal</button>
+                  @endif
                 </div>
               </div> 
-              <div class="card text-center">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
-  </div> 
+              <div class="card">
+                  <div class="card-header">
+                      Offers sent: {{ $job->proposals->count() }}
+                  </div>
+                  <div class="card-body">
+                  <h4 class="card-title">My proposal</h4>
+                  <p class="card-text">{{ $proposal->body }}</p>
+                  <strong>
+                  Created: <span class="badge badge-light">{{ $proposal->created_at->diffForHumans() }}</span>
+                  <span class="sr-only">Created</span>
+                </strong>  
+
+                <strong>
+                  Budget: <span class="badge badge-light">{{ '$' . $proposal->offer }}</span>
+                  <span class="sr-only">Budget</span>
+                </strong>  
+                <strong>
+                  Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
+                  <span class="sr-only">Duration</span>
+                </strong>  
+
+                  </div>
+              </div> 
             </div>
             <div class="col-md-4">
               <div class="card" style="width: 20rem;">
@@ -116,9 +128,9 @@
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Job Posted<span class="badge float-right">20</span></li>
-                  <li class="list-group-item">Job Completed<span class="badge float-right">20</span></li>
-                  <li class="list-group-item">Job Payments<span class="badge float-right">$20</span></li>
+                  <li class="list-group-item">Job Posted<span class="badge float-right">{{ $job->client->jobs->count() }}</span></li>
+                  <li class="list-group-item">Jobs Completed<span class="badge float-right">{{ $job->client->jobs_completed() }}</span></li>
+                  <li class="list-group-item">Jobs Payments<span class="badge float-right">{{ '$' . $job->client->jobs_payments() }}</span></li>
                   <li class="list-group-item">Rating<span class="float-right"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span></li>
                 </ul>
                 <div class="card-body text-center">
