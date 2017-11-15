@@ -29,7 +29,16 @@
                   <a class="dropdown-item" href="{{ route('profile', ['user' => auth()->user()->username ]) }}">Profile</a>
                   <a class="dropdown-item" href="#">Dashboard</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Logout</a>
+
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
                 </div>
               </li>
             @endauth
