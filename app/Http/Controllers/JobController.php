@@ -35,7 +35,7 @@ class JobController extends Controller
           'user_id' => auth()->user()->id
     	]);
 
-    	return back()->with('message', "Job created successfully");
+    	return redirect()->route('job', ['job' => $job->id])->with('message', "Job created successfully");
 
     }
 }

@@ -10,4 +10,9 @@ class ProfileController extends Controller
     public function show(User $user){
     	return view('users.profile', compact(['user']));
     }
+
+    public function dashboard(User $user){
+    	return view('users.dashboard', compact(['user']));
+    }
 }
+

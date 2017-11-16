@@ -88,7 +88,7 @@
                     <span class="badge badge-primary">{{ $skill }}</span>
                   @endforeach
                   </strong> 
-                  @if(!($proposal))
+                  @if(!($proposal) && auth()->user()->id != $job->client->id)
                   <hr>
                   <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Send proposal</button>
                   @endif
@@ -119,6 +119,37 @@
                 </div>
               </div> 
               @endif
+
+
+              @if($job->proposals->count() > 0)
+              <div class="card">
+                  <div class="card-header">
+                      Offers sent: {{ $job->proposals->count() }}
+                  </div>
+                  @foreach($job->proposals as $proposal)
+                  <div class="card-body">
+                    <h4 class="card-title">My proposal</h4>
+                    <p class="card-text">{{ $proposal->body }}</p>
+                    <strong>
+                    Created: <span class="badge badge-light">{{ $proposal->created_at->diffForHumans() }}</span>
+                    <span class="sr-only">Created</span>
+                    </strong>  
+
+                  <strong>
+                    Budget: <span class="badge badge-light">{{ '$' . $proposal->offer }}</span>
+                    <span class="sr-only">Budget</span>
+                  </strong>  
+                  <strong>
+                    Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
+                    <span class="sr-only">Duration</span>
+                  </strong>  
+                </div>
+                @endforeach
+              </div>
+              @else
+              <h3>No offers yet</h3> 
+              @endif
+
           </div>
             
             <div class="col-md-4">

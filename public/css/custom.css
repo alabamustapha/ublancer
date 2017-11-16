@@ -136,6 +136,10 @@ section#job-list{
   padding-top: 30px;
 }
 
+.mt-10{
+  margin-top: 10px;
+}
+
 .profile-img{
   max-width: 75px;
   display: block;
