@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    
-    <!-- Modal -->
+
+  @if(!($proposal) && auth()->user()->id != $job->client->id)  
+  <!-- Modal -->
   <div class="modal fade" id="proposalModal" tabindex="-1" role="dialog" aria-labelledby="proposalModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -32,9 +33,14 @@
             <input type="number" class="form-control" id="duration" placeholder="duration" name="days">
           </div>
         </div>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" name="terms" id="accept" value="1" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">I accept all terms and Conditions</span>
+        </label>
         
         <div class="form-group text-center    ">  
-            <button type="submit" class="btn btn-primary">Sbmit proposal</button>
+            <button type="submit" class="btn btn-primary">Submit proposal</button>
         </div>  
     </form>   
         </div>
@@ -42,6 +48,7 @@
       </div>
     </div>
   </div>
+  @endif
     <section id="job-list" class="jobs">
       <div class="container">
           <header class="text-center no-margin-bottom">   
@@ -181,7 +188,7 @@
     </section>
    
   
-    <div id="scrollTop">
+    <!-- <div id="scrollTop">
       <div class="d-flex align-items-center justify-content-end"><i class="fa fa-long-arrow-up"></i>To Top</div>
-    </div>
+    </div> -->
 @endsection

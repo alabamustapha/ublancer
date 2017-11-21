@@ -11,7 +11,6 @@
          
          <div class="row">
             @foreach($jobs as $job)
-
               <div class="col-sm-6 col-md-4">
                 <div class="card">
                   <div class="card-body">

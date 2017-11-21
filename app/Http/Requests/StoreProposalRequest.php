@@ -32,6 +32,7 @@ class StoreProposalRequest extends FormRequest
                 'user_id' =>    'required|integer|exists:users,id',
                 'days' =>       'required|integer|min:1',
                 'job_id' =>     'required|integer|exists:jobs,id',
+                'terms' =>      'accepted',
         ];
     }
 }
