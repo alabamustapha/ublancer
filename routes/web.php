@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/user/{user}', 'ProfileController@show')->name('profile');
 	Route::get('/user/{user}/dashboard', 'ProfileController@dashboard')->name('dashboard');
+	Route::get('/user/{user}/selling', 'ProfileController@selling')->name('selling');
 	Route::put('/user/{user}/update_profile', 'ProfileController@update')->name('update_profile');
 
 	Route::post('/jobs', 'JobController@store')->name('add_job');

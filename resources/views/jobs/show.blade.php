@@ -99,14 +99,18 @@
                   <hr>
                   <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Send proposal</button>
                   @endif
+
+                  @if($job->proposals->count() > 0)
+                    <span class="badge badge-primary">Offers sent: {{ $job->proposals->count() }}</span>
+                  @else
+                  <h3>No offers yet</h3> 
+                  @endif
               </div>
             </div>
 
               @if($proposal)
               <div class="card">
-                  <div class="card-header">
-                      Offers sent: {{ $job->proposals->count() }}
-                  </div>
+                  
                   <div class="card-body">
                     <h4 class="card-title">My proposal</h4>
                     <p class="card-text">{{ $proposal->body }}</p>
@@ -123,39 +127,16 @@
                     Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
                     <span class="sr-only">Duration</span>
                   </strong>  
+                  <hr>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Edit</button>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Widthdraw</button>
+                  
                 </div>
               </div> 
               @endif
 
 
-              @if($job->proposals->count() > 0)
-              <div class="card">
-                  <div class="card-header">
-                      Offers sent: {{ $job->proposals->count() }}
-                  </div>
-                  @foreach($job->proposals as $proposal)
-                  <div class="card-body">
-                    <h4 class="card-title">My proposal</h4>
-                    <p class="card-text">{{ $proposal->body }}</p>
-                    <strong>
-                    Created: <span class="badge badge-light">{{ $proposal->created_at->diffForHumans() }}</span>
-                    <span class="sr-only">Created</span>
-                    </strong>  
-
-                  <strong>
-                    Budget: <span class="badge badge-light">{{ '$' . $proposal->offer }}</span>
-                    <span class="sr-only">Budget</span>
-                  </strong>  
-                  <strong>
-                    Duration: <span class="badge badge-light">{{ $proposal->days }}</span>
-                    <span class="sr-only">Duration</span>
-                  </strong>  
-                </div>
-                @endforeach
-              </div>
-              @else
-              <h3>No offers yet</h3> 
-              @endif
+              
 
           </div>
             
