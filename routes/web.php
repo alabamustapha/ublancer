@@ -46,5 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/jobs', 'FreelancerController@jobs')->name('jobs');
 	Route::get('/jobs/{job}', 'JobController@show')->name('job');
 	Route::post('/jobs/{job}/proposals', 'ProposalController@store')->name('send_proposal');
+	Route::put('/jobs/{job}/proposals/{proposal}', 'ProposalController@update')->name('update_proposal');
+	Route::delete('/jobs/{job}/proposals/{proposal}', 'ProposalController@delete')->name('delete_proposal');
 
 });

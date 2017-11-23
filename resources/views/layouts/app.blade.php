@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/vendor/owl.carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
+    <link rel="stylesheet" href='/vendor/sweetalert/sweetalert.css'>
     @yield('styles')
     <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
@@ -44,6 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"> </script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src='/vendor/sweetalert/sweetalert.min.js'></script>
     <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="/js/front.js"></script>
 

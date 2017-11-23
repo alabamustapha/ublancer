@@ -21,4 +21,22 @@ class ProposalController extends Controller
 
     	return back()->with('proposal', $proposal)->with('message', "proposal sent");
     }
+	
+	public function update(Requests\UpdateProposalRequest $request, Job $job, Proposal $proposal){
+		
+    	$proposal = $proposal->update([
+    			'body' => $request->body,
+    			'offer' => $request->offer,
+    			'days' => $request->days,
+    	]);
+
+    	return back()->with('proposal', $proposal)->with('message', "proposal updated");
+    }
+	
+	public function delete(Requests\DeleteProposalRequest $request, Job $job, Proposal $proposal){
+    	
+		$proposal->delete();
+		
+    	return back()->with('proposal', $proposal)->with('message', "proposal deleted");
+    }
 }

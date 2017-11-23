@@ -48,6 +48,52 @@
       </div>
     </div>
   </div>
+  @elseif($proposal)
+  <div class="modal fade" id="editProposalModal" tabindex="-1" role="dialog" aria-labelledby="editProposalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProposalModalLabel">Edit Proposal for {{ $job->title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+      <form action="{{ route('update_proposal', ['job' => $job->id, 'proposal' => $proposal->id]) }}" method="POST">
+        {{ method_field('PUT') }}
+        {{ csrf_field() }}
+          <input type="hidden" name="user_id" value="{{ auth()->user()->id}}">
+          <input type="hidden" name="job_id" value="{{ $job->id}}">
+        <div class="form-group">
+          <label for="proposalBody" class="control-lable sr-only">Description</label>
+          <textarea class="form-control" id="proposalBody" placeholder="convince the client you are perfect for the job" name="body">{{ $proposal->body }}</textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="totalOffer">Total offer</label>
+            <input type="number" name="offer" class="form-control" id="totalOffer" placeholder="total offer $" value="{{ $proposal->offer }}" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="duration">Duration</label>
+            <input type="number" class="form-control" id="duration" placeholder="duration" name="days" value="{{ $proposal->days }}">
+          </div>
+        </div>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" name="terms" id="accept" value="1" class="custom-control-input" checked>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">I accept all terms and Conditions</span>
+        </label>
+        
+        <div class="form-group text-center    ">  
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>  
+    </form>   
+        </div>
+        
+      </div>
+    </div>
+  </div>
   @endif
     <section id="job-list" class="jobs">
       <div class="container">
@@ -128,9 +174,14 @@
                     <span class="sr-only">Duration</span>
                   </strong>  
                   <hr>
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Edit</button>
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#proposalModal">Widthdraw</button>
-                  
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#editProposalModal">Edit</button>
+
+                  <button class="btn btn-primary" id="delete-proposal">Widthdraw</button>
+                  <form method="POST" action="{{ route('delete_proposal', ['job' => $job->id, 'proposal' => $proposal->id]) }}" id="delete-proposal-form">
+                        <input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                  </form>
                 </div>
               </div> 
               @endif
@@ -172,4 +223,34 @@
     <!-- <div id="scrollTop">
       <div class="d-flex align-items-center justify-content-end"><i class="fa fa-long-arrow-up"></i>To Top</div>
     </div> -->
+@endsection
+
+
+@section('scripts')
+    <script>
+
+      $(document).ready(function(){
+
+          $('button#delete-proposal').click(function(event){
+
+            event.preventDefault();
+            swal({
+              title: "Are you sure?",
+              text: "Proposal will be deleted",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, delete it!",
+              closeOnConfirm: false
+            },
+            function(){
+              document.getElementById('delete-proposal-form').submit();
+            });
+      
+          });
+          
+      });
+      
+      
+    </script>
 @endsection

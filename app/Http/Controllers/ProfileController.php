@@ -18,5 +18,6 @@ class ProfileController extends Controller
     public function showRequests(User $user){
         return view('client.requests', compact(['user']));
     }
+    
 }
 
