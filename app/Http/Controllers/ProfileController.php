@@ -15,8 +15,8 @@ class ProfileController extends Controller
     	return view('users.dashboard', compact(['user']));
     }
 
-    public function selling(User $user){
-        return view('users.selling', compact(['user']));
+    public function showRequests(User $user){
+        return view('client.requests', compact(['user']));
     }
 }
 

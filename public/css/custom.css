@@ -140,6 +140,10 @@ section#job-list{
   margin-top: 10px;
 }
 
+.mt-20{
+  margin-top: 20px;
+}
+
 .profile-img{
   max-width: 75px;
   display: block;
