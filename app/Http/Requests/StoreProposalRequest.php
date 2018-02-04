@@ -15,8 +15,8 @@ class StoreProposalRequest extends FormRequest
      */
     public function authorize()
     {   
-        $job = Job::find($this->route('job'))->first();    
-        return Proposal::where('user_id', auth()->user()->id)->where('job_id', $job->id)->count() == 0;
+       // $job = Job::find($this->route('job')->id)->first();   
+        return Proposal::where('user_id', auth()->user()->id)->where('job_id', $this->route('job')->id)->count() == 0;
     }
 
     /**

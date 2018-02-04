@@ -7,6 +7,9 @@
 </ul>
 
 <ul class="nav nav-pills flex-column">
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('admin_packages') }}">Packages</a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('admin_categories') }}">Categories</a>
   </li>

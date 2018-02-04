@@ -1,0 +1,49 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+
+    mysql:
+      image: bitnami/mysql:latest
+      container_name: ublancer-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=ublancer
+        - MYSQL_USER=ublancer
+        - MYSQL_PASSWORD=ublancer
+      ports:
+        - "2123:3306"
+      networks:
+        - app-tier
+
+    webserver:
+      image: nginx:alpine
+      container_name: ublancer-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "2121:80"
+      networks:
+        - app-tier
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: ublancer-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+      networks:
+        - app-tier
+

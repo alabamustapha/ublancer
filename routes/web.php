@@ -33,6 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('admin/skills/{skill}/edit', "SkillController@edit")->name('edit_skill');
 		Route::delete('admin/skills/{skill}/delete', "SkillController@delete")->name('delete_skill');
 
+		Route::get('/admin/packages', 'PackageController@index')->name('admin_packages');
+		Route::post('admin/packages', 'PackageController@store')->name('add_package');
+		Route::POST('admin/packages/{id}', 'PackageController@update')->name('update_package');
+		Route::get('admin/packages/{package}/edit', "PackageController@edit")->name('edit_package');
+		Route::delete('admin/packages/{package}/delete', "PackageController@delete")->name('delete_package');
+
 	});
 
 
@@ -40,6 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/user/{user}', 'ProfileController@show')->name('profile');
 	Route::get('/user/{user}/dashboard', 'ProfileController@dashboard')->name('dashboard');
 	Route::get('/user/{user}/requests', 'ProfileController@showRequests')->name('manage_requests');
+	Route::get('/user/{user}/requests/{job}', 'ProfileController@showRequestsById')->name('requests_detail');
+
 	Route::put('/user/{user}/update_profile', 'ProfileController@update')->name('update_profile');
 
 	Route::post('/jobs', 'JobController@store')->name('add_job');

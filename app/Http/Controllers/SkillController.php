@@ -25,9 +25,9 @@ class SkillController extends Controller
         return back()->withMessage("Skill deleted");
     }
 
-    public function edit(Category $category){
-        $categories = Category::all();
-        return view('categories.edit', compact('categories', 'category'));
+    public function edit(Skill $skill){
+        $categories = Skill::all();
+        return view('skills.edit', compact( 'skill'));
     }
 
     public function update(Request $request, Skill $skill){

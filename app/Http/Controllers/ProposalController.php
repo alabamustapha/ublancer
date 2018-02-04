@@ -18,7 +18,7 @@ class ProposalController extends Controller
     			'days' => $request->days,
     			'job_id' => $job->id,
     	]);
-
+			
     	return back()->with('proposal', $proposal)->with('message', "proposal sent");
     }
 	
